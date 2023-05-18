@@ -1,0 +1,21 @@
+Pizza AND (hasTopping SOME CheeseTopping)
+Pizza AND (hasTopping EXACTLY 4 CheeseTopping)
+Pizza AND (hasCalorificContent SOME integer[>=400])
+Pizza AND (hasCalorificContent SOME integer[<400])
+Pizza AND (hasCalorificContent VALUE 800)
+Pizza AND (hasTopping MIN 3 PizzaTopping)
+Pizza AND (hasTopping SOME (PizzaTopping AND (hasSpiciness SOME Hot)))
+
+Hot OR Mild OR Medium
+
+NamedPizza
+hasTopping SOME MozzarellaTopping
+hasTopping SOME OliveTopping
+hasTopping SOME ParmezanTopping
+hasTopping SOME TomatoTopping
+hasTopping ONLY (MozzarellaTopping OR OliveTopping OR ParmezanTopping OR TomatoTopping)
+
+{America, England, France, Germany, Italy}
+
+NamedPizza
+hasTopping ONLY (ChocolateTopping OR BananaTopping)
