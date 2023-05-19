@@ -28,21 +28,28 @@ opt2: enumerada		{ cout << "Classe Enumerada.\n"; }
 	 | coberta		{ cout << "Classe Coberta.\n"; }
 	 ;
 
-definida: AND PARENTHESIS PROPERTY reserved CLASS PARENTHESIS
-	 | AND PARENTHESIS PROPERTY reserved CARDINAL CLASS PARENTHESIS
-	 | AND PARENTHESIS PROPERTY reserved CARDINAL PARENTHESIS
-	 | AND PARENTHESIS PROPERTY reserved PARENTHESIS CLASS definida PARENTHESIS PARENTHESIS
+definida: AND PARENTHESIS PROPERTY reserved opt3
+	 ;
+
+opt3: CLASS PARENTHESIS
+	| CARDINAL CLASS PARENTHESIS
+	| CARDINAL PARENTHESIS
+	| PARENTHESIS CLASS definida PARENTHESIS PARENTHESIS
+	;
 
 primitiva: PROPERTY reserved CLASS primitiva
 	 | PROPERTY ONLY PARENTHESIS coberta PARENTHESIS
 	 | PROPERTY reserved enumerada
+	 ;
 
 enumerada: CHAVES CLASS VIRGULA enumerada CHAVES
 	 | CLASS VIRGULA enumerada
 	 | CLASS
+	 ;
 
 coberta: CLASS OR coberta
 	 | CLASS
+	 ;
 
 reserved: SOME
 	 | ALL
@@ -52,6 +59,7 @@ reserved: SOME
 	 | EXACTLY
 	 | THAT
 	 | NOT
+	 ;
 
 
 

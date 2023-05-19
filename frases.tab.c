@@ -131,10 +131,11 @@ enum yysymbol_kind_t
   YYSYMBOL_opt1 = 23,                      /* opt1  */
   YYSYMBOL_opt2 = 24,                      /* opt2  */
   YYSYMBOL_definida = 25,                  /* definida  */
-  YYSYMBOL_primitiva = 26,                 /* primitiva  */
-  YYSYMBOL_enumerada = 27,                 /* enumerada  */
-  YYSYMBOL_coberta = 28,                   /* coberta  */
-  YYSYMBOL_reserved = 29                   /* reserved  */
+  YYSYMBOL_opt3 = 26,                      /* opt3  */
+  YYSYMBOL_primitiva = 27,                 /* primitiva  */
+  YYSYMBOL_enumerada = 28,                 /* enumerada  */
+  YYSYMBOL_coberta = 29,                   /* coberta  */
+  YYSYMBOL_reserved = 30                   /* reserved  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -467,11 +468,11 @@ union yyalloc
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  20
 /* YYNNTS -- Number of nonterminals.  */
-#define YYNNTS  10
+#define YYNNTS  11
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  29
+#define YYNRULES  30
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  55
+#define YYNSTATES  56
 
 /* YYMAXUTOK -- Last valid token kind.  */
 #define YYMAXUTOK   274
@@ -523,8 +524,9 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int8 yyrline[] =
 {
        0,    15,    15,    16,    19,    20,    23,    24,    27,    28,
-      31,    32,    33,    34,    36,    37,    38,    40,    41,    42,
-      44,    45,    47,    48,    49,    50,    51,    52,    53,    54
+      31,    34,    35,    36,    37,    40,    41,    42,    45,    46,
+      47,    50,    51,    54,    55,    56,    57,    58,    59,    60,
+      61
 };
 #endif
 
@@ -543,8 +545,8 @@ static const char *const yytname[] =
   "\"end of file\"", "error", "\"invalid token\"", "SOME", "ALL", "VALUE",
   "MIN", "MAX", "EXACTLY", "THAT", "ONLY", "NOT", "AND", "OR", "CLASS",
   "PROPERTY", "CARDINAL", "PARENTHESIS", "CHAVES", "VIRGULA", "$accept",
-  "sint", "owl", "opt1", "opt2", "definida", "primitiva", "enumerada",
-  "coberta", "reserved", YY_NULLPTR
+  "sint", "owl", "opt1", "opt2", "definida", "opt3", "primitiva",
+  "enumerada", "coberta", "reserved", YY_NULLPTR
 };
 
 static const char *
@@ -572,8 +574,8 @@ static const yytype_int8 yypact[] =
       -1,    13,   -11,   -11,   -11,    24,   -11,   -11,    29,    32,
      -11,   -11,   -11,   -11,   -11,   -11,   -11,   -11,    30,   -11,
       16,    31,   -11,    13,     8,    27,    17,   -11,    28,    21,
-      34,   -11,   -11,    35,    25,    39,   -11,   -11,    37,   -11,
-      36,   -11,    38,    40,   -11
+      34,   -11,   -11,    35,    25,    39,   -11,   -11,   -11,    37,
+     -11,    36,   -11,    38,    40,   -11
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -581,24 +583,26 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       0,    19,     0,     0,     3,     5,     8,     9,     0,     0,
-       0,     0,     4,     6,     7,     0,     1,     2,     0,    21,
-      20,    22,    23,    24,    25,    26,    27,    28,     0,    29,
-       0,    19,    18,     0,     0,     0,    19,    16,     0,     0,
-       0,    14,    17,     0,     0,     0,    15,    10,     0,    12,
-       0,    11,     0,     0,    13
+       0,    20,     0,     0,     3,     5,     8,     9,     0,     0,
+       0,     0,     4,     6,     7,     0,     1,     2,     0,    22,
+      21,    23,    24,    25,    26,    27,    28,    29,     0,    30,
+       0,    20,    19,     0,     0,     0,    20,    17,     0,     0,
+       0,    15,    18,     0,     0,     0,    10,    16,    11,     0,
+      13,     0,    12,     0,     0,    14
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -11,    45,   -11,   -11,   -11,     6,    22,   -10,    -9,    26
+     -11,    45,   -11,   -11,   -11,     5,   -11,    22,   -10,    -9,
+      26
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     3,     4,    12,     5,    13,    14,     6,     7,    30
+       0,     3,     4,    12,     5,    13,    46,    14,     6,     7,
+      30
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -609,9 +613,9 @@ static const yytype_int8 yytable[] =
       20,    32,    21,    22,    23,    24,    25,    26,    27,    28,
       29,    21,    22,    23,    24,    25,    26,    27,    15,    29,
       37,     8,     9,    38,    10,     1,    40,    31,    11,     2,
-      36,     2,    10,    16,     2,    43,    11,    44,    45,    48,
-      18,    19,    49,    33,    34,     9,    42,    35,     8,    17,
-      11,    46,    47,    50,    51,    53,    52,    54,    41,     0,
+      36,     2,    10,    16,     2,    43,    11,    44,    45,    49,
+      18,    19,    50,    33,    34,     9,    42,    35,     8,    17,
+      11,    47,    48,    51,    52,    54,    53,    55,    41,     0,
       39
 };
 
@@ -622,7 +626,7 @@ static const yytype_int8 yycheck[] =
       30,    12,    13,    33,    15,    14,    35,    14,    19,    18,
       14,    18,    15,     0,    18,    14,    19,    16,    17,    14,
       17,    14,    17,    19,    15,    13,    18,    17,    12,     4,
-      19,    17,    17,    14,    17,    17,    50,    17,    36,    -1,
+      19,    17,    17,    14,    17,    17,    51,    17,    36,    -1,
       34
 };
 
@@ -630,28 +634,30 @@ static const yytype_int8 yycheck[] =
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    14,    18,    21,    22,    24,    27,    28,    12,    13,
-      15,    19,    23,    25,    26,    14,     0,    21,    17,    14,
-      28,     3,     4,     5,     6,     7,     8,     9,    10,    11,
-      29,    14,    27,    19,    15,    17,    14,    27,    27,    29,
-      28,    26,    18,    14,    16,    17,    17,    17,    14,    17,
-      14,    17,    25,    17,    17
+       0,    14,    18,    21,    22,    24,    28,    29,    12,    13,
+      15,    19,    23,    25,    27,    14,     0,    21,    17,    14,
+      29,     3,     4,     5,     6,     7,     8,     9,    10,    11,
+      30,    14,    28,    19,    15,    17,    14,    28,    28,    30,
+      29,    27,    18,    14,    16,    17,    26,    17,    17,    14,
+      17,    14,    17,    25,    17,    17
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
        0,    20,    21,    21,    22,    22,    23,    23,    24,    24,
-      25,    25,    25,    25,    26,    26,    26,    27,    27,    27,
-      28,    28,    29,    29,    29,    29,    29,    29,    29,    29
+      25,    26,    26,    26,    26,    27,    27,    27,    28,    28,
+      28,    29,    29,    30,    30,    30,    30,    30,    30,    30,
+      30
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     2,     1,     2,     1,     1,     1,     1,     1,
-       6,     7,     6,     9,     4,     5,     3,     5,     3,     1,
-       3,     1,     1,     1,     1,     1,     1,     1,     1,     1
+       5,     2,     3,     2,     5,     4,     5,     3,     5,     3,
+       1,     3,     1,     1,     1,     1,     1,     1,     1,     1,
+       1
 };
 
 
@@ -1117,29 +1123,29 @@ yyreduce:
   case 6: /* opt1: definida  */
 #line 23 "frases.y"
                         { cout << "Classe Definida.\n"; }
-#line 1121 "frases.tab.c"
+#line 1127 "frases.tab.c"
     break;
 
   case 7: /* opt1: primitiva  */
 #line 24 "frases.y"
                         { cout << "Classe Primitiva.\n"; }
-#line 1127 "frases.tab.c"
+#line 1133 "frases.tab.c"
     break;
 
   case 8: /* opt2: enumerada  */
 #line 27 "frases.y"
                         { cout << "Classe Enumerada.\n"; }
-#line 1133 "frases.tab.c"
+#line 1139 "frases.tab.c"
     break;
 
   case 9: /* opt2: coberta  */
 #line 28 "frases.y"
                                 { cout << "Classe Coberta.\n"; }
-#line 1139 "frases.tab.c"
+#line 1145 "frases.tab.c"
     break;
 
 
-#line 1143 "frases.tab.c"
+#line 1149 "frases.tab.c"
 
       default: break;
     }
@@ -1332,7 +1338,7 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 59 "frases.y"
+#line 67 "frases.y"
 
 
 /* definido pelo analisador léxico */
